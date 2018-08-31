@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="header">
+      <view class="title">虫洞原理</view>
+      <view class="desc">可以把平行宇宙和婴儿宇宙连接起来，并提供时间旅行的可能性。它也可能是连接黑洞和白洞的时空隧道，一起探索未知的世界</view>
+  </view>
+
+  <view class="menu-list">
+    <block wx:for-items="{{menuList}}" wx:for-item="menuItem">
+      <view class="menu-item">
+        <view class="menu-item-main" id="{{index}}" bindtap="tapMenuItem">
+          <text class="menu-item-name">{{menuItem.name}}</text>
+          <image
+            class="menu-item-arrow {{menuItem.opened ? 'open' : 'close'}} {{menuItem.url ? 'url' : ''}}"
+            src="/image/arrowright.png">
+          </image>
+        </view>
+        <view class="menu-item-api-list {{menuItem.opened ? 'open' : 'close'}}">
+          <block wx:for-items="{{menuItem.APIList}}" wx:for-item="APIItem">
+            <navigator url="{{APIItem.url}}">
+              <view class="menu-item-api-item" style="{{index === 0 ? 'border-top:none;' : ''}}">
+                <view class="menu-item-api-item-text">
+                  <text class="menu-item-api-item-text-zhname">{{APIItem.zhName}}</text>
+                  <text class="menu-item-api-item-text-enname">{{APIItem.enName}}</text>
+                </view>
+                <image class="menu-item-api-item-arrow" src="/image/arrowright.png"></image>
+              </view>
+            </navigator>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
